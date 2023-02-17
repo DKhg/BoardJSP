@@ -7,6 +7,7 @@
 * Java 11
 * MyBatis
 * Spring Boot 2.7.8
+* Maven
 
 <br>
 
@@ -38,11 +39,13 @@
 
 <br>
 <br>
+
 ## :paperclip:게시글 상세조회 화면
-![게시판jsp상세](https://user-images.githubusercontent.com/106241314/219560311-977ba15f-a450-4e56-85e3-e46a6e5cd0ab.png)
+
+![게시판jsp상세](https://user-images.githubusercontent.com/106241314/219560501-c1c01f51-78e5-44bc-9abb-38df4f0f0ed6.png)
 
 <br>
 <br>
 
-* [참고사이트](https://congsong.tistory.com/12)
+* [참고사이트]([https://backendcode.tistory.com/121])
 
