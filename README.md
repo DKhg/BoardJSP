@@ -47,5 +47,5 @@
 <br>
 <br>
 
-* [참고사이트]([https://backendcode.tistory.com/121])
+* [참고사이트](https://backendcode.tistory.com/121)
 
