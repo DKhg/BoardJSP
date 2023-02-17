@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.BoardJSP.mapper.BoardMapper">
+
+    <select id="maxId" resultType="int">
+        select nvl(max(id),0) from board
+    </select>
+
+    <insert id="insertData" parameterType="com.BoardJSP.dto.BoardDTO">
+        insert into board (id,name,password,email,title,content,
+        hitCount,created) values (#{id},#{name},#{password},#{email},#{title},
+        #{content},0,sysdate)
+    </insert>
+
+    <select id="getDataCount" parameterType="hashMap" resultType="int">
+        select nvl(count(*),0) from board
+        where ${searchKey} like '%' || #{searchValue} || '%'
+    </select>
+
+    <select id="getLists" parameterType="map" resultType="com.BoardJSP.dto.BoardDTO">
+        select * from (
+        select rownum rnum, data.* from (
+        select id,name,title,hitCount,
+        to_char(created,'YYYY-MM-DD') created
+        from board where ${searchKey} like '%' || #{searchValue} || '%'
+        order by id desc) data)
+        <![CDATA[
+	        where rnum>=#{start} and rnum<=#{end}
+        ]]>
+    </select>
+
+    <update id="updateHitCount" parameterType="int">
+        update board set hitCount=hitCount+1 where id=#{id}
+    </update>
+
+    <select id="getReadData" parameterType="int" resultType="com.BoardJSP.dto.BoardDTO">
+        select id,name,password,email,title,content,
+        hitCount,created from board where id=#{id}
+    </select>
+
+    <update id="updateData" parameterType="com.BoardJSP.dto.BoardDTO">
+        update board set name=#{name},password=#{password},email=#{email},
+        title=#{title},content=#{content} where id=#{id}
+    </update>
+
+    <delete id="deleteData" parameterType="int">
+        delete board where id=#{id}
+    </delete>
+
+
+</mapper>
