@@ -8,6 +8,7 @@
 * MyBatis
 * Spring Boot 2.7.8
 * Maven
+* OracleDB
 
 <br>
 
